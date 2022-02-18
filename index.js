@@ -16,7 +16,7 @@ client.on('messageCreate', message => {
     console.log(message.content)
     if (message.content.toLowerCase() == "ping") {
 
-        message.channel.send("pong")
+        message.channel.send("Push test = pong")
     }
     if (message.content.toLowerCase().includes('video') || message.content.toLowerCase().includes('optage')) {
         message.channel.send("Screencast-o-Matic er fantastisk! https://screencast-o-matic.com/")
