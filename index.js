@@ -6,18 +6,25 @@ const client = new Client({
         Intents.FLAGS.GUILDS,
         Intents.FLAGS.GUILD_MESSAGES
     ]
-});
+})
 
 client.once('ready', () => {
     console.log('Ready!');
-});
+})
 
-client.on('message', message => {
+client.on('messageCreate', message => {
     console.log(message.content)
-    if (message.content == "ping") {
+    if (message.content.toLowerCase() == "ping") {
 
         message.channel.send("pong")
     }
-});
+    if (message.content.toLowerCase().includes('video') || message.content.toLowerCase().includes('optage')) {
+        message.channel.send("Screencast-o-Matic er fantastisk! https://screencast-o-matic.com/")
+    }
+})
 
-client.login(token);
+client.on('guildMemberAdd', member => {
+    member.send('Velkommen til programmering')
+})
+
+client.login(token)
