@@ -27,4 +27,5 @@ client.on('guildMemberAdd', member => {
     member.send('Velkommen til programmering')
 })
 
+
 client.login(token)
