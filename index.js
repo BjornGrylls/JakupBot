@@ -1,10 +1,6 @@
+require('dotenv').config();
 const { Client, Intents } = require('discord.js');
-var token;
-try {
-    token = require('./config.json').token;
-} catch (error) {
-    token = process.env.token
-}
+const token = process.env.token
 
 var exec = require('child_process').exec;
 exec('node app.js &');
