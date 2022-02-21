@@ -23,20 +23,13 @@ module.exports = {
     messageEmbed.react(memberEmoji)
 
     client.on('messageReactionAdd', async (reaction, user) => {
-      console.log('så langt så godt0')
       if(reaction.message.partial) await reaction.message.fetch()
-      console.log('så langt så godt1')
       if(reaction.partial) await reaction.fetch()
-      console.log('så langt så godt2')
       if(user.bot) return
-      console.log('så langt så godt3')
       if(!reaction.message.guild) return
-      console.log('så langt så godt4')
 
       if(reaction.message.channel.id == channel) {
-        console.log('så langt så godt5')
         if(reaction.emoji.name == memberEmoji) {
-          console.log('så langt så godt6')
           await reaction.message.guild.members.cache.get(user.id).roles.add(memberRole)
           await reaction.message.guild.members.cache.get(user.id).roles.remove(guestRole)
           const channles = reaction.message.guild.channels.cache.get(exclusiveclub);
