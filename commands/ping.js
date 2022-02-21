@@ -2,6 +2,11 @@ module.exports = {
   name: 'ping',
   description: 'this is a ping command',
   execute(message, args) {
-    message.channel.send('mega pong')
+    var formattedmessage = 'mega pong'
+    const env = process.env.env
+    if (env) {
+      formattedmessage += ' from ' + process.env.env
+    }
+    message.channel.send(formattedmessage)
   }
 }
