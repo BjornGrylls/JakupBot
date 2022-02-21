@@ -1,7 +1,7 @@
 // create an express app
 const express = require("express")
 const app = express()
-const port = process.env.PORT || 80085
+const port = process.env.PORT || 3000
 
 // define the first route
 app.get("/", function(req, res) {
