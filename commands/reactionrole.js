@@ -3,6 +3,7 @@ module.exports = {
   description: 'Reaction roles ;D',
   async execute(message, args, discord, client) {
     const channel = '943791639690883152'
+    const exclusiveclub = '945237454422671411'
     const memberRole = message.guild.roles.cache.find(role => role.name === "Exclusive club")
     const guestRole = message.guild.roles.cache.find(role => role.name === "Guest")
     const memberEmoji = '👍'
@@ -38,7 +39,8 @@ module.exports = {
           console.log('så langt så godt6')
           await reaction.message.guild.members.cache.get(user.id).roles.add(memberRole)
           await reaction.message.guild.members.cache.get(user.id).roles.remove(guestRole)
-
+          const channles = reaction.message.guild.channels.cache.get(exclusiveclub);
+          channles.send("<@"+user.id+"> was given <@&945237536236785684>")
         }
       } else {
         return
@@ -54,7 +56,8 @@ module.exports = {
         if(reaction.emoji.name == memberEmoji) {
           await reaction.message.guild.members.cache.get(user.id).roles.remove(memberRole)
           await reaction.message.guild.members.cache.get(user.id).roles.add(guestRole)
-            
+          const channles = reaction.message.guild.channels.cache.get(exclusiveclub);
+          channles.send("<@"+user.id+"> has gotten <@&945237536236785684> removed")
         }
       } else {
         return
