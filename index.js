@@ -1,5 +1,10 @@
 const { Client, Intents } = require('discord.js');
-const { token } = require('./config.json');
+var token;
+try {
+    token = require('./config.json').token;
+} catch (error) {
+    token = process.env.token
+}
 
 const client = new Client({
     intents: [
@@ -16,7 +21,7 @@ client.on('messageCreate', message => {
     console.log(message.content)
     if (message.content.toLowerCase() == "ping") {
 
-        message.channel.send("pong")
+        message.channel.send("pongHeroku")
     }
     if (message.content.toLowerCase().includes('video') || message.content.toLowerCase().includes('optage')) {
         message.channel.send("Screencast-o-Matic er fantastisk! https://screencast-o-matic.com/")
