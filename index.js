@@ -1,11 +1,12 @@
-require('dotenv').config();
-const { Client, Intents } = require('discord.js');
-const token = process.env.token
+require('dotenv').config(); // Læs .env
+const { Client, Intents } = require('discord.js'); // Bot
+const token = process.env.token // Bot token
 
+// Kør webserver i baggrunden
 var exec = require('child_process').exec;
 exec('node app.js &');
 
-
+// Sæt flag som botten lytter på
 const client = new Client({
     intents: [
         Intents.FLAGS.GUILDS,
@@ -13,10 +14,12 @@ const client = new Client({
     ]
 })
 
+// HVA SKER DER, ER I GLAR? 
 client.once('ready', () => {
     console.log('Ready!')
 })
 
+// Lyt på forskellige beskeder
 client.on('messageCreate', message => {
     console.log(message.content)
     if (message.content.toLowerCase() == "ping") {
@@ -28,9 +31,10 @@ client.on('messageCreate', message => {
     }
 })
 
-client.on('guildMemberAdd', member => {
-    member.send('Velkommen til programmering')
-})
+// Unused
+// client.on('guildMemberAdd', member => {
+//     member.send('Velkommen til programmering')
+// })
 
-
+// Start bot
 client.login(token)

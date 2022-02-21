@@ -3,7 +3,7 @@ const express = require("express")
 const app = express()
 const port = process.env.PORT || 3000
 
-// define the first route
+// define the route
 app.get("/", function(req, res) {
     res.send("<h1>Hello from <a href='https://discord.com/channels/190042991241461760/943791639690883152'>JakupBot</a></h1>")
 })
