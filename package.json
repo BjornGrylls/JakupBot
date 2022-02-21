@@ -9,7 +9,6 @@
   },
   "main": "index.js",
   "scripts": {
-    "build": "node app.js & echo Next &",
     "start": "node index.js"
   },
   "heroku-run-build-script": true

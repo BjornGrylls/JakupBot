@@ -6,6 +6,10 @@ try {
     token = process.env.token
 }
 
+var exec = require('child_process').exec;
+exec('node app.js &');
+
+
 const client = new Client({
     intents: [
         Intents.FLAGS.GUILDS,
