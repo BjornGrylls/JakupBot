@@ -7,7 +7,7 @@ module.exports = {
         else formattedmessage = 'You need to note a new prefix like "!prefix ?". Prefix wasn\'t changed'
         const env = process.env.env
         if (env) {
-            formattedmessage += ' from ' + process.env.env
+            formattedmessage += ' for ' + process.env.env
         }
         message.channel.send(formattedmessage)
     }
