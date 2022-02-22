@@ -3,6 +3,10 @@ const discord = require('discord.js')
 const { Client, Intents } = require('discord.js'); // Bot
 const fs = require('fs')
 const token = process.env.token // Bot token
+const commandFiles = fs.readdirSync('./commands/').filter(file => file.endsWith('.js'))
+
+var prefix = '!'
+
 
 // Kør webserver i baggrunden
 var exec = require('child_process').exec;
@@ -21,18 +25,14 @@ const client = new Client({
 
 var prefix = '!' // må ikke ændres // men det gør jeg alligevel
 client.commands = new discord.Collection();
-const commandFiles = fs.readdirSync('./commands/').filter(file => file.endsWith('.js'))
-
 for (const file of commandFiles) {
     const command = require(`./commands/${file}`)
-
     client.commands.set(command.name, command)
 }
 
 // HVA SKER DER, ER I GLAR? 
-client.once('ready', () => {
-    console.log('Ready!')
-})
+client.once('ready', () => { console.log('Ready!') })
+
 
 // Lyt på forskellige beskeder
 client.on('messageCreate', message => {
@@ -57,6 +57,8 @@ client.on('messageCreate', message => {
     } else if (command === 'prefix') {
         if (args.length != 0) prefix = args[0]
         client.commands.get('prefix').execute(message, args)
+    } else {
+        client.commands.get('unknown').execute(message, args)
     }
     
     // else if (command === 'unmute') {

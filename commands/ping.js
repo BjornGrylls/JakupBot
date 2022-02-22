@@ -1,8 +1,8 @@
 module.exports = {
   name: 'ping',
-  description: 'this is a ping command',
+  description: 'The bot will respond to ping with a pong',
   execute(message, args) {
-    var formattedmessage = 'mega pong'
+    var formattedmessage = 'pong'
     const env = process.env.env
     if (env) {
       formattedmessage += ' from ' + process.env.env
