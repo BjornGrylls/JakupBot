@@ -16,10 +16,7 @@ module.exports = {
         {name: 'Rule 1', value: 'Vær sød'}
       )
     
-
-    console.log(embed)
     let messageEmbed = await message.channel.send({embeds: [embed]})
-    console.log('lol')
     messageEmbed.react(memberEmoji)
 
     client.on('messageReactionAdd', async (reaction, user) => {
@@ -39,6 +36,7 @@ module.exports = {
         return
       }
     })
+    
     client.on('messageReactionRemove', async (reaction, user) => {
       if(reaction.message.partial) await reaction.message.fetch()
       if(reaction.partial) await reaction.fetch()

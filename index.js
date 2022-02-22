@@ -22,7 +22,7 @@ var exec = require('child_process').exec;
 exec('node app.js &');
 
 
-const prefix = '!'
+const prefix = '!' // må ikke ændres
 client.commands = new discord.Collection();
 const commandFiles = fs.readdirSync('./commands/').filter(file => file.endsWith('.js'))
 
@@ -43,7 +43,6 @@ client.on('messageCreate', message => {
     if (!message.content.startsWith(prefix) || message.author.bot) return
     const args = message.content.slice(prefix.length).split(/ +/)
     const command = args.shift().toLowerCase()
-
     console.log(command)
 
     if (command === 'ping') {
@@ -54,11 +53,6 @@ client.on('messageCreate', message => {
         client.commands.get('reactionrole').execute(message, args, discord, client)
     }
 })
-
-// Unused
-// client.on('guildMemberAdd', member => {
-//     member.send('Velkommen til programmering')
-// })
 
 // Start bot
 client.login(token)
