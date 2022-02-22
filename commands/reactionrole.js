@@ -6,6 +6,7 @@ module.exports = {
     const exclusiveclub = '945237454422671411'
     const memberRole = message.guild.roles.cache.find(role => role.name === "Exclusive club")
     const guestRole = message.guild.roles.cache.find(role => role.name === "Guest")
+    const muteRole = message.guild.roles.cache.find(role => role.name === "Mute")
     const memberEmoji = '👍'
   
     let embed = new discord.MessageEmbed()
@@ -29,6 +30,7 @@ module.exports = {
         if(reaction.emoji.name == memberEmoji) {
           await reaction.message.guild.members.cache.get(user.id).roles.add(memberRole)
           await reaction.message.guild.members.cache.get(user.id).roles.remove(guestRole)
+          await reaction.message.guild.members.cache.get(user.id).roles.remove(muteRole)
           const channles = reaction.message.guild.channels.cache.get(exclusiveclub);
           channles.send("<@"+user.id+"> was given <@&945237536236785684>")
         }

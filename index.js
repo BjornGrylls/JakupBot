@@ -18,11 +18,8 @@ const client = new Client({
     ]
 })
 
-var exec = require('child_process').exec;
-exec('node app.js &');
 
-
-const prefix = '!' // må ikke ændres
+var prefix = '!' // må ikke ændres // men det gør jeg alligevel
 client.commands = new discord.Collection();
 const commandFiles = fs.readdirSync('./commands/').filter(file => file.endsWith('.js'))
 
@@ -40,6 +37,12 @@ client.once('ready', () => {
 // Lyt på forskellige beskeder
 client.on('messageCreate', message => {
 
+    if (message.content.includes('du er dum')) {
+        console.log('hej')
+        client.commands.get('mute').execute(message, client)
+    }
+
+
     if (!message.content.startsWith(prefix) || message.author.bot) return
     const args = message.content.slice(prefix.length).split(/ +/)
     const command = args.shift().toLowerCase()
@@ -51,7 +54,14 @@ client.on('messageCreate', message => {
         client.commands.get('screencast').execute(message, args)
     } else if (command == 'reactionrole') {
         client.commands.get('reactionrole').execute(message, args, discord, client)
+    } else if (command === 'prefix') {
+        if (args.length != 0) prefix = args[0]
+        client.commands.get('prefix').execute(message, args)
     }
+    
+    // else if (command === 'unmute') {
+    //     client.commands.get('unmute').execute(message, args)
+    // } 
 })
 
 // Start bot
