@@ -22,7 +22,7 @@ var exec = require('child_process').exec;
 exec('node app.js &');
 
 
-const prefix = '!' // må ikke ændres
+var prefix = '!' // må ikke ændres // men det gør jeg alligevel
 client.commands = new discord.Collection();
 const commandFiles = fs.readdirSync('./commands/').filter(file => file.endsWith('.js'))
 
@@ -51,6 +51,9 @@ client.on('messageCreate', message => {
         client.commands.get('screencast').execute(message, args)
     } else if (command == 'reactionrole') {
         client.commands.get('reactionrole').execute(message, args, discord, client)
+    } else if (command === 'prefix') {
+        if (args.length != 0) prefix = args[0]
+        client.commands.get('prefix').execute(message, args)
     }
 })
 
