@@ -31,7 +31,7 @@ module.exports = {
           await reaction.message.guild.members.cache.get(user.id).roles.add(memberRole)
           await reaction.message.guild.members.cache.get(user.id).roles.remove(guestRole)
           const channles = reaction.message.guild.channels.cache.get(exclusiveclub);
-          channles.send("<@" + user.id + "> joined <@&945237536236785684>")
+          channles.send("<@" + user.id + "> joined <@&945237536236785684> 👀")
         }
       } else {
         return
@@ -50,7 +50,7 @@ module.exports = {
           await reaction.message.guild.members.cache.get(user.id).roles.remove(memberRole)
           await reaction.message.guild.members.cache.get(user.id).roles.add(guestRole)
           const channles = reaction.message.guild.channels.cache.get(exclusiveclub);
-          channles.send("<@" + user.id + "> left <@&945237536236785684>")
+          channles.send("<@" + user.id + "> left <@&945237536236785684> 🚶‍♂️")
         }
       } else {
         return
