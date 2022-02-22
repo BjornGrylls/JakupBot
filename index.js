@@ -18,9 +18,6 @@ const client = new Client({
     ]
 })
 
-var exec = require('child_process').exec;
-exec('node app.js &');
-
 
 var prefix = '!' // må ikke ændres // men det gør jeg alligevel
 client.commands = new discord.Collection();
