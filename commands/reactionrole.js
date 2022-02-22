@@ -19,6 +19,7 @@ module.exports = {
     let messageEmbed = await message.channel.send({embeds: [embed]})
     messageEmbed.react(memberEmoji)
 
+    // Hvis folk reagerer
     client.on('messageReactionAdd', async (reaction, user) => {
       if(reaction.message.partial) await reaction.message.fetch()
       if(reaction.partial) await reaction.fetch()
@@ -37,6 +38,7 @@ module.exports = {
       }
     })
     
+    // Hvis folk fjerner reaktion
     client.on('messageReactionRemove', async (reaction, user) => {
       if(reaction.message.partial) await reaction.message.fetch()
       if(reaction.partial) await reaction.fetch()
