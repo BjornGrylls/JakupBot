@@ -6,7 +6,7 @@
     "discord.js": "^13.6.0",
     "dotenv": "^16.0.0",
     "express": "^4.17.3",
-    "nodemon": "^2.0.15"
+    "nodemon": "^2.0.16"
   },
   "main": "index.js",
   "scripts": {
